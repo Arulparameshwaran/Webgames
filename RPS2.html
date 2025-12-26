@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			h1{
+				font-size:30px;
+				padding:10px;
+				font-style:italic;
+			}
+			button{
+				background:cyan;
+				color:blue;
+				font-size:20px;
+				border:2px solid blue;
+				padding:5px;
+				padding-left:20px;
+				padding-right:20px;
+			}
+			div
+			{
+				width:500px;
+				height:200px;
+				border:10px outset white;
+				background:linear-gradient(to right,#FFFFFF,#000000);
+				padding:10px;
+				color:black;
+				
+			}
+			</style>
+			<script>
+				let win=0;
+					let lose=0;
+					let draw=0;
+					let tot=0;
+					let possible=[[0,1,-1],[1,0,-1],[-1,1,0]]
+					console.log(possible)
+				function game(a)
+				{
+					tot++;
+					let com=Math.floor(Math.random()*(3)+1);
+					let r=document.getElementById('result');
+					let comVal=['ROCK','PAPER','SCISSORS'];
+					let gameVal=possible[a-1][com-1];
+						if(gameVal=== 0)
+						{
+								r.innerHTML=`<h3>Your Input :<b>${comVal[a-1]}</b></h3><br>
+								<h3>Computer Input :<b>${comVal[com-1]}</b></h3><br>
+								<b>win :${win} lose :${lose} draw :${++draw} Total :${tot}`;                    
+						}
+						if(gameVal=== -1)
+						{
+								r.innerHTML=`<h3>Your Input : <b>${comVal[a-1]}</b></h3><br>
+								<h3>Computer Input : <b>${comVal[com-1]}</b></h3><br>
+								<b>win :${win} lose :${++lose} draw :${draw} Total :${tot}`;
+								
+								
+						}
+						if(gameVal === 1)	
+						{
+								r.innerHTML=`<h3>Your Input : <b>${comVal[a-1]}</b></h3><br>
+								<h3>Computer Input : <b>${comVal[com-1]}</b></h3><br>
+								<b>win :${++win} lose :${lose} draw :${draw} Total :${tot}`;
+						}
+						
+						
+				}
+				</script>
+	</head>
+	<body>
+		<h1>ROCK PAPER SCISSORS</h1>
+		<button onclick=game(1);>Rock</button>
+		<button onclick=game(2);>Paper</button>
+		<button onclick=game(3);>Scissors</button>
+		<div id='result'></div>
+	</body>
+</html>
