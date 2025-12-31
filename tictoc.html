@@ -115,7 +115,7 @@
 							winner=+b[i][0];
 							xo= winner===1 ? 'X' : 'O' ;
 							alert("Winner is "+xo);
-							cells.forEach(button => {
+							cells.forEach(button => {		//Disabling all buttons if winner is found
 								button.disabled=true;
 							});
 							break;
@@ -153,7 +153,7 @@
 					}	
 					if((xo === undefined)&&(count === 9))
 					{
-						alert("IT'S DRAW" );
+						alert("IT'S DRAW" );  // No Winner so far and all Moves are done.
 					}
 				}
 				

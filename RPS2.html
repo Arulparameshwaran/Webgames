@@ -8,57 +8,66 @@
 				font-style:italic;
 			}
 			button{
-				background:cyan;
+				background:#7EE367;
 				color:blue;
-				font-size:20px;
+				font-size:23px;
 				border:2px solid blue;
 				padding:5px;
+				font-style:bold;
 				padding-left:20px;
 				padding-right:20px;
 			}
-			div
+			div.output{
+				font-size:20px;
+			}
+			div#result
 			{
 				width:500px;
-				height:200px;
+				height:250px;
 				border:10px outset white;
-				background:linear-gradient(to right,#FFFFFF,#000000);
+				background:#67CEE3;
+				font-weight:100px;
 				padding:10px;
 				color:black;
 				
 			}
+			
 			</style>
 			<script>
 				let win=0;
 					let lose=0;
 					let draw=0;
 					let tot=0;
-					let possible=[[0,1,-1],[1,0,-1],[-1,1,0]]
-					console.log(possible)
+					let possible=[[0,-1,1],[1,0,-1],[-1,1,0]] //Creating Game Possibilites 
+					//ROCK as array element[0] ,PAPER as array element [1],SCISSORS array element[2]  
+					// 0 represent Draw ,1 represent win,-1 represent Lose
 				function game(a)
 				{
 					tot++;
-					let com=Math.floor(Math.random()*(3)+1);
+					let com=Math.floor(Math.random()*(3)+1);  //Generating Computer Value
 					let r=document.getElementById('result');
-					let comVal=['ROCK','PAPER','SCISSORS'];
-					let gameVal=possible[a-1][com-1];
+					let comVal=['ROCK &#128511','PAPER &#128196','SCISSORS &#9986'];
+					let gameVal=possible[a-1][com-1];	
 						if(gameVal=== 0)
 						{
 								r.innerHTML=`<h3>Your Input :<b>${comVal[a-1]}</b></h3><br>
 								<h3>Computer Input :<b>${comVal[com-1]}</b></h3><br>
+								<b><div class=output>🫱🏼‍🫲🏽 DRAW</div></b><br>
 								<b>win :${win} lose :${lose} draw :${++draw} Total :${tot}`;                    
 						}
 						if(gameVal=== -1)
 						{
 								r.innerHTML=`<h3>Your Input : <b>${comVal[a-1]}</b></h3><br>
 								<h3>Computer Input : <b>${comVal[com-1]}</b></h3><br>
+								<b><div class=output>🫵🏼🤣 LOOSER</div></b></br>
 								<b>win :${win} lose :${++lose} draw :${draw} Total :${tot}`;
-								
 								
 						}
 						if(gameVal === 1)	
 						{
 								r.innerHTML=`<h3>Your Input : <b>${comVal[a-1]}</b></h3><br>
 								<h3>Computer Input : <b>${comVal[com-1]}</b></h3><br>
+								<b><div class=output>😎👌🔥 WIN</div></b></br>
 								<b>win :${++win} lose :${lose} draw :${draw} Total :${tot}`;
 						}
 						
@@ -67,10 +76,12 @@
 				</script>
 	</head>
 	<body>
+		<center>
 		<h1>ROCK PAPER SCISSORS</h1>
-		<button onclick=game(1);>Rock</button>
-		<button onclick=game(2);>Paper</button>
-		<button onclick=game(3);>Scissors</button>
+		<button onclick=game(1);>Rock <div class=rps>&#128511</div></button>
+		<button onclick=game(2);>Paper <div class=rps>&#128196</div></button>
+		<button onclick=game(3);>Scissors <div class=rps>&#9986</div></button>
 		<div id='result'></div>
+		</center>
 	</body>
 </html>
